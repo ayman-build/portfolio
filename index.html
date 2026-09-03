@@ -619,122 +619,268 @@ on for elegant and unique codes, responsive design, and user-first solution.</p>
 
 </main>
 
-<script>
-  (function() {
-    // ----- project data -----
-    const projects = [
-      {
-        title: "Neon Dashboard",
-        desc: "Analytics dashboard for SaaS startups, built with React, D3, and Tailwind.",
-        tags: ["React", "D3", "Tailwind"],
-        icon: "fa-chart-pie",
-        link: "#"
-      },
-      {
-        title: "EcoTrack API",
-        desc: "RESTful API for carbon footprint tracking, using Node.js, Express, and MongoDB.",
-        tags: ["Node.js", "Express", "MongoDB"],
-        icon: "fa-leaf",
-        link: "#"
-      },
-      {
-        title: "Portfolio Pro",
-        desc: "A customizable portfolio template for creatives — this very site is built with it.",
-        tags: ["HTML/CSS", "JavaScript", "Responsive"],
-        icon: "fa-layer-group",
-        link: "#"
-      },
-      {
-        title: "TaskFlow",
-        desc: "Collaborative task manager with real-time updates (WebSocket, React, Redis).",
-        tags: ["React", "WebSocket", "Redis"],
-        icon: "fa-tasks",
-        link: "#"
-      },
-      {
-        title: "DevBlog",
-        desc: "Minimalist blog engine with markdown support, built with Next.js and Tailwind.",
-        tags: ["Next.js", "MDX", "Tailwind"],
-        icon: "fa-pen-fancy",
-        link: "#"
-      }
-    ];
-
-    // render projects
-    const grid = document.getElementById('projectGrid');
-    if (grid) {
-      grid.innerHTML = projects.map(p => `
-        <div class="project-card">
-          <div class="project-icon"><i class="fas ${p.icon}"></i></div>
-          <h3>${p.title}</h3>
-          <p>${p.desc}</p>
-          <div class="project-tags">
-            ${p.tags.map(tag => `<span>${tag}</span>`).join('')}
-          </div>
-          <a href="${p.link}" class="project-link" aria-label="view project">
-            View project <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      `).join('');
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    // ----- copy email -----
-    const copyBtn = document.getElementById('copyEmailBtn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', function(e) {
-        const email = 'aymansani12@gmail.com';
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(email).then(() => {
-            const original = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            this.style.background = '#0d9488';
-            setTimeout(() => {
-              this.innerHTML = original;
-              this.style.background = '#0b1a2e';
-            }, 1800);
-          }).catch(() => fallbackCopy(email));
-        } else {
-          fallbackCopy(email);
-        }
-      });
+    body {
+      background: linear-gradient(145deg, #f5f7fc 0%, #e9edf5 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 1.5rem;
+      
     }
 
-    function fallbackCopy(text) {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.top = '-9999px';
-      ta.style.left = '-9999px';
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand('copy');
-        alert('Email copied to clipboard!');
-      } catch (err) {
-        alert('Could not copy email. Please select it manually.');
-      }
-      document.body.removeChild(ta);
+    /* card container – exactly like the original JS object, but now pure HTML/CSS */
+    .project-card {
+      max-width: 400px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2.5rem;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25), 0 8px 24px -6px rgba(0, 20, 40, 0.08);
+      padding: 1.8rem 1.8rem 2rem;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(2px);
     }
 
-    // ----- smooth anchor scroll -----
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const targetEl = document.querySelector(targetId);
-        if (targetEl) {
-          e.preventDefault();
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 50px -16px rgba(0, 0, 0, 0.3);
+    }
 
-    // ----- helper: update profile image via console -----
-    console.log('📸 To update your profile image:');
-    console.log('   document.getElementById("profileImage").src = "your-image-url.jpg";');
-    console.log('   (recommended: square image, min 400x400px)');
+    /* ---- image area (you can add your own <img> here) ---- */
+    .card-image {
+      width: 100%;
+      height: 180px;
+      border-radius: 1.8rem;
+      overflow: hidden;
+      margin-bottom: 1.4rem;
+      background: #d9e2ef; /* fallback */
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.2s;
+      image:
+    }
 
-  })();
-</script>
+    /* ⭐️ REPLACE the src with your own image! 
+       This is a placeholder "neon dashboard" abstract image */
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .card-image img {
+      transform: scale(1.02);
+    }
+
+    /* if you want to use an icon instead of image, we keep it optional */
+    .image-icon-placeholder {
+      display: none; /* hidden by default – we use <img> */
+    }
+
+    /* ---- typography & layout ---- */
+    .card-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0b1a33;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .card-title i {
+      color: #3b7cff;
+      font-size: 1.6rem;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .card-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 1.5rem;
+      font-weight: 450;
+      padding-right: 0.2rem;
+    }
+
+    /* tags (chips) */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.7rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      background: #eef4ff;
+      color: #1f3a6b;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(59, 124, 255, 0.12);
+      backdrop-filter: blur(2px);
+      transition: all 0.15s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .tag:hover {
+      background: #dce8ff;
+      border-color: #3b7cff40;
+    }
+
+    /* link / CTA */
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #0b1a33;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.7rem 1.8rem 0.7rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: 0.2s;
+      border: 1px solid #1f3355;
+      box-shadow: 0 8px 14px -8px rgba(11, 26, 51, 0.25);
+      letter-spacing: 0.2px;
+    }
+
+    .card-link i {
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .card-link:hover {
+      background: #1f3f6b;
+      border-color: #3b7cff;
+      box-shadow: 0 12px 20px -10px #0b1a3360;
+      transform: scale(1.02);
+    }
+
+    .card-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* small flex row for icon + link */
+    .card-footer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    /* ---- demo: two cards side by side (just to show flexibility) ---- */
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    /* second card uses the same structure, but we can add a different image */
+    /* you can copy the .project-card block to create more projects */
+
+    /* helper note: if you want to use an icon instead of image, 
+       just replace the <img> with <i> and add .image-icon-placeholder styles */
+  </style>
+</head>
+<body>
+
+<div class="cards-grid">
+  <!-- ========== PROJECT CARD 1 ========== -->
+  <div class="project-card">
+    <!-- IMAGE: replace src with your own image -->
+    <div class="card-image">
+      <img src="neon1.avif" 
+           alt="Neon Dashboard preview" 
+           loading="lazy">
+    </div>
+
+    <!-- TITLE with icon (from JS object) -->
+    <div class="card-title">
+      <i class="fas fa-chart-pie" aria-hidden="true"></i>
+      Neon Dashboard
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="card-desc">
+      Analytics dashboard for SaaS startups, built with React, D3, and Tailwind.
+    </div>
+
+    <!-- TAGS (exactly as in the array) -->
+    <div class="tags">
+      <span class="tag">React</span>
+      <span class="tag">D3</span>
+      <span class="tag">Tailwind</span>
+    </div>
+
+    <!-- LINK -->
+    <div class="card-footer">
+      <a href="#" class="card-link">
+        <span>View project</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========== PROJECT CARD 2 – same structure, different image ========== -->
+  <div class="project-card">
+    <div class="card-image">
+      <!-- REPLACE with your own image (second project) -->
+      <img src="neon2.png" 
+           alt="Analytics dashboard alternative" 
+           loading="lazy">
+    </div>
+
+    <div class="card-title">
+      <i class="fas fa-chart-line" aria-hidden="true"></i>
+      Growth Studio
+    </div>
+
+    <div class="card-desc">
+      Real-time metrics & AI insights, powered by Vue, Chart.js and SCSS.
+    </div>
+
+    <div class="tags">
+      <span class="tag">Vue</span>
+      <span class="tag">Chart.js</span>
+      <span class="tag">SCSS</span>
+    </div>
+
+    <div class="card-footer">
+      <a href="#" class="card-link">
+        <span>Explore</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
+
+
 </body>
 </html>
