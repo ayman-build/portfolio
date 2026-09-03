@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>elegant-Ayman · Code Portfolio</title>
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -16,10 +16,11 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: #f8fafc;
+      background: #f4f7fc;
       color: #0b1a2e;
       line-height: 1.6;
       scroll-behavior: smooth;
+      padding: 0 0 2rem 0;
     }
 
     /* soft background glow */
@@ -29,14 +30,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(56, 132, 255, 0.05) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 70%, rgba(0, 200, 200, 0.04) 0%, transparent 50%);
+      background: radial-gradient(circle at 15% 20%, rgba(56, 132, 255, 0.06) 0%, transparent 55%),
+                  radial-gradient(circle at 85% 75%, rgba(0, 200, 200, 0.05) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 2rem;
       position: relative;
@@ -48,26 +49,34 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.8rem 0 1rem 0;
+      padding: 1.5rem 0 1rem 0;
       flex-wrap: wrap;
       gap: 1rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     }
 
     .logo {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: -0.03em;
       background: linear-gradient(135deg, #2563eb, #0d9488);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo i {
+      -webkit-text-fill-color: #2563eb;
+      font-size: 1.6rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2.2rem;
       font-weight: 500;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -75,6 +84,9 @@
       color: #1e293b;
       transition: color 0.2s;
       font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .nav-links a:hover {
@@ -82,17 +94,16 @@
     }
 
     .nav-links a i {
-      margin-right: 6px;
       font-size: 0.9rem;
       color: #64748b;
     }
 
-    /* ----- hero with profile image ----- */
+    /* ----- hero with profile image & extra picture ----- */
     .hero {
       display: flex;
       align-items: center;
       gap: 4rem;
-      padding: 3.5rem 0 3rem 0;
+      padding: 3rem 0 2.5rem 0;
       flex-wrap: wrap;
     }
 
@@ -102,7 +113,7 @@
 
     .hero-badge {
       background: #e2e8f0;
-      padding: 0.3rem 1.2rem;
+      padding: 0.3rem 1.4rem;
       border-radius: 40px;
       font-size: 0.8rem;
       font-weight: 600;
@@ -113,7 +124,7 @@
     }
 
     .hero h1 {
-      font-size: 3.6rem;
+      font-size: 3.5rem;
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.03em;
@@ -177,15 +188,18 @@
       transform: translateY(-2px);
     }
 
-    /* ===== PROFILE IMAGE ===== */
-    .hero-image {
-      flex: 0 0 220px;
-      text-align: center;
+    /* ===== PROFILE IMAGE + extra image ===== */
+    .hero-image-group {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
     }
 
     .profile-img {
-      width: 220px;
-      height: 220px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
@@ -193,7 +207,6 @@
       background: #e2e8f0;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: block;
-      margin: 0 auto;
     }
 
     .profile-img:hover {
@@ -201,28 +214,28 @@
       box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
     }
 
-    /* fallback text if image fails to load */
-    .profile-img-error {
+    .extra-img-row {
       display: flex;
-      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
       justify-content: center;
-      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
-      color: #1e40af;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-align: center;
-      padding: 0 1rem;
     }
 
-    .profile-img-error i {
-      font-size: 2.5rem;
-      display: block;
-      margin-bottom: 0.4rem;
-      color: #3b82f6;
+    .extra-img-row img {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.15);
+      border: 2px solid white;
+      transition: transform 0.2s;
+    }
+    .extra-img-row img:hover {
+      transform: scale(1.05);
     }
 
     .image-caption {
-      margin-top: 0.75rem;
+      margin-top: 0.4rem;
       font-size: 0.8rem;
       color: #94a3b8;
       display: flex;
@@ -230,14 +243,9 @@
       justify-content: center;
       gap: 0.4rem;
       background: rgba(255,255,255,0.6);
-      padding: 0.3rem 1rem;
+      padding: 0.2rem 1.2rem;
       border-radius: 40px;
       backdrop-filter: blur(2px);
-    }
-
-    .image-caption i {
-      color: #3b82f6;
-      font-size: 0.75rem;
     }
 
     /* ----- tech strip ----- */
@@ -266,7 +274,7 @@
       text-align: center;
     }
 
-    /* ----- projects ----- */
+    /* ----- projects with images ----- */
     .section-title {
       font-size: 2.2rem;
       font-weight: 700;
@@ -284,18 +292,26 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minspace(300px, 1fr));
       gap: 2rem;
       margin-bottom: 2.5rem;
+    }
+    /* Fix for grid fallback */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
     }
 
     .project-card {
       background: white;
-      border-radius: 24px;
-      padding: 1.8rem 1.8rem 2rem 1.8rem;
+      border-radius: 28px;
+      padding: 1.5rem 1.5rem 1.8rem;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02), 0 2px 8px rgba(0, 0, 0, 0.02);
       transition: transform 0.2s, box-shadow 0.25s;
       border: 1px solid rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
@@ -304,21 +320,37 @@
       border-color: #e2e8f0;
     }
 
-    .project-icon {
-      font-size: 2.2rem;
-      color: #2563eb;
-      margin-bottom: 0.8rem;
+    .project-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+      background: #d9e2ef;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: transform 0.2s;
+    }
+    .project-card:hover .project-img {
+      transform: scale(1.01);
     }
 
     .project-card h3 {
       font-size: 1.5rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .project-card h3 i {
+      color: #2563eb;
+      font-size: 1.4rem;
     }
 
     .project-card p {
       color: #475569;
-      margin: 0.5rem 0 1.2rem 0;
+      margin: 0.5rem 0 1rem 0;
+      flex: 1;
     }
 
     .project-tags {
@@ -330,12 +362,11 @@
 
     .project-tags span {
       background: #f1f5f9;
-      padding: 0.2rem 0.9rem;
+      padding: 0.2rem 1rem;
       border-radius: 40px;
       font-size: 0.75rem;
       font-weight: 500;
       color: #1e293b;
-      letter-spacing: 0.2px;
     }
 
     .project-link {
@@ -345,17 +376,16 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      margin-top: 0.2rem;
     }
-
     .project-link i {
       transition: transform 0.2s;
     }
-
     .project-link:hover i {
       transform: translateX(4px);
     }
 
-    /* ----- about / contact ----- */
+    /* ----- about / contact with more image ----- */
     .about-wrap {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
@@ -366,6 +396,7 @@
       border-radius: 40px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
       border: 1px solid rgba(0, 0, 0, 0.02);
+      align-items: center;
     }
 
     .about-text h2 {
@@ -394,6 +425,25 @@
     .social-links a:hover {
       color: #2563eb;
       transform: scale(1.05);
+    }
+
+    .about-extra-img {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .about-extra-img img {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid #eef4ff;
+      transition: 0.2s;
+    }
+    .about-extra-img img:hover {
+      border-color: #2563eb;
+      transform: scale(1.04);
     }
 
     .contact-card {
@@ -441,7 +491,7 @@
     /* ----- footer ----- */
     footer {
       border-top: 1px solid rgba(0, 0, 0, 0.04);
-      padding: 2.5rem 0 3rem 0;
+      padding: 2.5rem 0 1.5rem 0;
       margin-top: 2rem;
       display: flex;
       justify-content: space-between;
@@ -462,7 +512,7 @@
       color: #2563eb;
     }
 
-    /* ----- responsive ----- */
+    /* ----- responsive (mobile first) ----- */
     @media (max-width: 800px) {
       .hero {
         flex-direction: column-reverse;
@@ -482,12 +532,17 @@
       .hero h1 {
         font-size: 2.8rem;
       }
-      .hero-image {
+      .hero-image-group {
         flex: 0 0 auto;
+        width: 100%;
       }
       .profile-img {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
+      }
+      .extra-img-row img {
+        width: 70px;
+        height: 70px;
       }
       .about-wrap {
         grid-template-columns: 1fr;
@@ -498,6 +553,9 @@
       }
       .nav-links {
         gap: 1.2rem;
+      }
+      .about-extra-img {
+        justify-content: center;
       }
     }
 
@@ -515,8 +573,12 @@
         gap: 1rem 1.5rem;
       }
       .profile-img {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
+      }
+      .extra-img-row img {
+        width: 60px;
+        height: 60px;
       }
     }
   </style>
@@ -528,7 +590,7 @@
 
   <!-- navigation -->
   <nav>
-    <div class="logo"><i class="fas fa-code" style="margin-right: 6px; background: none; -webkit-text-fill-color: #2563eb;"></i> elegant_Ayman</div>
+    <div class="logo"><i class="fas fa-code"></i> elegant_Ayman</div>
     <div class="nav-links">
       <a href="#projects"><i class="fas fa-folder-open"></i> Work</a>
       <a href="#about"><i class="fas fa-user"></i> About</a>
@@ -536,35 +598,27 @@
     </div>
   </nav>
 
-  <!-- ===== HERO + PROFILE IMAGE ===== -->
+  <!-- ===== HERO + PROFILE IMAGE + extra images ===== -->
   <section class="hero">
     <div class="hero-content">
-      <span class="hero-badge"><i class="fas fa-terminal" style="margin-right: 6px;"></i> </span>
+      <span class="hero-badge"><i class="fas fa-terminal"></i> full-stack · design</span>
       <h1>Building digital <br /><span>products & experiences</span></h1>
-on for elegant and unique codes, responsive design, and user-first solution.</p>
+      <p>I craft elegant, responsive interfaces and robust backends. Focused on clean code, performance, and user-first solutions.</p>
       <div class="cta-group">
         <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> See projects</a>
         <a href="#contact" class="btn btn-outline"><i class="fas fa-comment"></i> Let's talk</a>
       </div>
     </div>
-    <div class="hero-image">
-      <!-- 
-        ============================================================
-        REPLACE the src with YOUR image URL.
-        Recommended: square image, at least 400x400px for best quality.
-        ============================================================
-      -->
-      <img 
-        src=" ./IMG_6826.JPG"
-        alt="elegant_Ayman  - Full Stack Developer" 
-        class="profile-img"
-        id="profileImage"
-        onerror="this.onerror=null; this.classList.add('profile-img-error'); this.alt='Profile image placeholder'; this.innerHTML='<i class=\'fas fa-user-circle\'></i><span>Add your photo</span>';"
-      />
-      <div class="image-caption">
-        <i class="fas fa-camera"></i> 
-        <i class="fas fa-edit" style="font-size: 0.6rem; opacity: 0.6;"></i>
+    <div class="hero-image-group">
+      <!-- profile image -->
+      <img src="IMG_6826.JPG" 
+           alt="elegant-Ayman" class="profile-img" />
+      <div class="extra-img-row">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop" alt="code" />
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&h=200&fit=crop" alt="laptop" />
+        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=200&h=200&fit=crop" alt="team" />
       </div>
+      
     </div>
   </section>
 
@@ -578,38 +632,82 @@ on for elegant and unique codes, responsive design, and user-first solution.</p>
     <span class="tech-item"><i class="fab fa-git-alt"></i> Git</span>
   </div>
 
-  <!-- projects -->
+  <!-- projects with images -->
   <div id="projects">
     <div class="section-title"><i class="fas fa-code-branch"></i> Featured work</div>
-    <div class="projects-grid" id="projectGrid">
-      <!-- injected by JS -->
+    <div class="projects-grid">
+      <!-- card 1 -->
+      <div class="project-card">
+        <img class="project-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Neon Dashboard" />
+        <h3><i class="fas fa-chart-pie"></i> Neon Dashboard</h3>
+        <p>Analytics dashboard for SaaS startups, built with React, D3, and Tailwind.</p>
+        <div class="project-tags">
+          <span>React</span><span>D3</span><span>Tailwind</span>
+        </div>
+        <a href="#" class="project-link">View project <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <!-- card 2 -->
+      <div class="project-card">
+        <img class="project-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Growth Studio" />
+        <h3><i class="fas fa-chart-line"></i> Growth Studio</h3>
+        <p>Real-time metrics & AI insights, powered by Vue, Chart.js and SCSS.</p>
+        <div class="project-tags">
+          <span>Vue</span><span>Chart.js</span><span>SCSS</span>
+        </div>
+        <a href="#" class="project-link">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <!-- card 3 -->
+      <div class="project-card">
+        <img class="project-img" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="EcoTrack" />
+        <h3><i class="fas fa-leaf"></i> EcoTrack</h3>
+        <p>Sustainability tracker with IoT sensors, Node.js backend and real-time maps.</p>
+        <div class="project-tags">
+          <span>Node.js</span><span>MongoDB</span><span>Mapbox</span>
+        </div>
+        <a href="#" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <!-- card 4 (extra) -->
+      <div class="project-card">
+        <img class="project-img" src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop" alt="Finwise" />
+        <h3><i class="fas fa-coins"></i> Finwise</h3>
+        <p>Personal finance assistant with AI predictions, built with Python and FastAPI.</p>
+        <div class="project-tags">
+          <span>Python</span><span>FastAPI</span><span>React</span>
+        </div>
+        <a href="#" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
   </div>
 
-  <!-- about + contact -->
+  <!-- about + contact + extra images -->
   <div id="about" class="about-wrap">
     <div class="about-text">
       <h2><i class="fas fa-smile" style="margin-right: 12px; color: #2563eb;"></i> About me</h2>
       <p>I'm a software engineer with 2 years of experience building modern web applications. I believe in writing maintainable code, designing with empathy, and delivering value fast.</p>
-      <p>📍 Based in nigeria in lagos, agege  </p>
+      <p>📍 Based in Lagos, Nigeria  ·  remote-ready</p>
+      <div class="about-extra-img">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&h=200&fit=crop" alt="team" />
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=200&h=200&fit=crop" alt="workspace" />
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=200&h=200&fit=crop" alt="code" />
+      </div>
       <div class="social-links">
-        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-stack-overflow"></i></a>
       </div>
     </div>
     <div id="contact" class="contact-card">
       <span class="highlight"><i class="fas fa-envelope" style="margin-right: 8px;"></i>Email</span>
       <span class="email">aymansani12@gmail.com</span>
       <button class="cta-small" id="copyEmailBtn"><i class="fas fa-copy"></i> Copy email</button>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: #475569;"><i class="fas fa-clock" style="margin-right: 6px;"></i> Usually replies within 24h</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #475569;"><i class="fas fa-clock"></i> Usually replies within 24h</p>
     </div>
   </div>
 
   <!-- footer -->
   <footer>
-    <span>© 2026 elegant-Ayman<i class="fas fa-heart" style="color: #2563eb;"></i></span>
+    <span>© 2026 elegant-Ayman <i class="fas fa-heart" style="color: #2563eb; margin:0 4px;"></i> code & design</span>
     <div class="footer-links">
       <a href="#"><i class="fab fa-github"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -619,268 +717,18 @@ on for elegant and unique codes, responsive design, and user-first solution.</p>
 
 </main>
 
-<style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: linear-gradient(145deg, #f5f7fc 0%, #e9edf5 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      padding: 1.5rem;
-      
-    }
-
-    /* card container – exactly like the original JS object, but now pure HTML/CSS */
-    .project-card {
-      max-width: 400px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 2.5rem;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25), 0 8px 24px -6px rgba(0, 20, 40, 0.08);
-      padding: 1.8rem 1.8rem 2rem;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(2px);
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 30px 50px -16px rgba(0, 0, 0, 0.3);
-    }
-
-    /* ---- image area (you can add your own <img> here) ---- */
-    .card-image {
-      width: 100%;
-      height: 180px;
-      border-radius: 1.8rem;
-      overflow: hidden;
-      margin-bottom: 1.4rem;
-      background: #d9e2ef; /* fallback */
-      box-shadow: inset 0 4px 8px rgba(0,0,0,0.02);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      transition: all 0.2s;
-      image:
-    }
-
-    /* ⭐️ REPLACE the src with your own image! 
-       This is a placeholder "neon dashboard" abstract image */
-    .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .project-card:hover .card-image img {
-      transform: scale(1.02);
-    }
-
-    /* if you want to use an icon instead of image, we keep it optional */
-    .image-icon-placeholder {
-      display: none; /* hidden by default – we use <img> */
-    }
-
-    /* ---- typography & layout ---- */
-    .card-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #0b1a33;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .card-title i {
-      color: #3b7cff;
-      font-size: 1.6rem;
-      width: 2rem;
-      text-align: center;
-    }
-
-    .card-desc {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #334155;
-      margin-bottom: 1.5rem;
-      font-weight: 450;
-      padding-right: 0.2rem;
-    }
-
-    /* tags (chips) */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 0.7rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .tag {
-      background: #eef4ff;
-      color: #1f3a6b;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      letter-spacing: 0.01em;
-      border: 1px solid rgba(59, 124, 255, 0.12);
-      backdrop-filter: blur(2px);
-      transition: all 0.15s;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-    }
-
-    .tag:hover {
-      background: #dce8ff;
-      border-color: #3b7cff40;
-    }
-
-    /* link / CTA */
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: #0b1a33;
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.7rem 1.8rem 0.7rem 1.8rem;
-      border-radius: 60px;
-      text-decoration: none;
-      transition: 0.2s;
-      border: 1px solid #1f3355;
-      box-shadow: 0 8px 14px -8px rgba(11, 26, 51, 0.25);
-      letter-spacing: 0.2px;
-    }
-
-    .card-link i {
-      font-size: 1rem;
-      transition: transform 0.2s;
-    }
-
-    .card-link:hover {
-      background: #1f3f6b;
-      border-color: #3b7cff;
-      box-shadow: 0 12px 20px -10px #0b1a3360;
-      transform: scale(1.02);
-    }
-
-    .card-link:hover i {
-      transform: translateX(4px);
-    }
-
-    /* small flex row for icon + link */
-    .card-footer {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-top: 0.2rem;
-    }
-
-    /* ---- demo: two cards side by side (just to show flexibility) ---- */
-    .cards-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      align-items: stretch;
-    }
-
-    /* second card uses the same structure, but we can add a different image */
-    /* you can copy the .project-card block to create more projects */
-
-    /* helper note: if you want to use an icon instead of image, 
-       just replace the <img> with <i> and add .image-icon-placeholder styles */
-  </style>
-</head>
-<body>
-
-<div class="cards-grid">
-  <!-- ========== PROJECT CARD 1 ========== -->
-  <div class="project-card">
-    <!-- IMAGE: replace src with your own image -->
-    <div class="card-image">
-      <img src="neon1.avif" 
-           alt="Neon Dashboard preview" 
-           loading="lazy">
-    </div>
-
-    <!-- TITLE with icon (from JS object) -->
-    <div class="card-title">
-      <i class="fas fa-chart-pie" aria-hidden="true"></i>
-      Neon Dashboard
-    </div>
-
-    <!-- DESCRIPTION -->
-    <div class="card-desc">
-      Analytics dashboard for SaaS startups, built with React, D3, and Tailwind.
-    </div>
-
-    <!-- TAGS (exactly as in the array) -->
-    <div class="tags">
-      <span class="tag">React</span>
-      <span class="tag">D3</span>
-      <span class="tag">Tailwind</span>
-    </div>
-
-    <!-- LINK -->
-    <div class="card-footer">
-      <a href="#" class="card-link">
-        <span>View project</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- ========== PROJECT CARD 2 – same structure, different image ========== -->
-  <div class="project-card">
-    <div class="card-image">
-      <!-- REPLACE with your own image (second project) -->
-      <img src="neon2.png" 
-           alt="Analytics dashboard alternative" 
-           loading="lazy">
-    </div>
-
-    <div class="card-title">
-      <i class="fas fa-chart-line" aria-hidden="true"></i>
-      Growth Studio
-    </div>
-
-    <div class="card-desc">
-      Real-time metrics & AI insights, powered by Vue, Chart.js and SCSS.
-    </div>
-
-    <div class="tags">
-      <span class="tag">Vue</span>
-      <span class="tag">Chart.js</span>
-      <span class="tag">SCSS</span>
-    </div>
-
-    <div class="card-footer">
-      <a href="#" class="card-link">
-        <span>Explore</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-</div>
-
-
-
-</body>
-</html>
-
-
+<script>
+  // copy email
+  document.getElementById('copyEmailBtn')?.addEventListener('click', function() {
+    const email = 'aymansani12@gmail.com';
+    navigator.clipboard?.writeText(email).then(() => {
+      const original = this.innerHTML;
+      this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => { this.innerHTML = original; }, 2000);
+    }).catch(() => {
+      alert('Copy manually: ' + email);
+    });
+  });
+</script>
 </body>
 </html>
